@@ -6,14 +6,14 @@ def say(text):
     k.say(text)
     k.runAndWait()
 
-say('This is the default speech.')
-rate = k.getProperty('rate')
-volume = k.getProperty('volume')
-voice1 = k.getProperty('voice')
+# say('This is the default speech.')
+# rate = k.getProperty('rate')
+# volume = k.getProperty('volume')
+# voice1 = k.getProperty('voice')
 
-print rate
-print volume
-print voice1
+# print rate
+# print volume
+# print voice1
 
 ## Tests different voice rates
 
@@ -39,13 +39,13 @@ print voice1
 
 k.setProperty('rate', 125)
 say('Testing voice rate 125.')
-k.runAndWait()
+
 
 ##-- Checking for voice volume 0.5--##
 
 k.setProperty('volume', 0.5)
 say('Testing voice volume 0.5.')
-k.runAndWait()
+)
 
 ## Prints and speaks all the voices available ##
 voices =k.getProperty('voices')
@@ -53,8 +53,16 @@ for voice in voices:
    k.setProperty('voices', voice.id)
    print(voice.id)
    say('Testing voice ')
-k.runAndWait()
 
-# k.setProperty('voice', Mandarin)
-# k.say('Testing voice ')
-# k.runAndWait()
+
+
+function handler(e) {
+    var target = $(e.target);
+    var elId = target.text();
+    if( target.is(".el") ) {
+        $(".el").lettering('words');
+        alert(elId);
+    }
+}
+
+$(".el").mouseover(handler);

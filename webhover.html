@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Webhover</title>
+</head>
+
+<body>
+	
+	<p  class="el" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris suscipit interdum fermentum. Aenean fermentum imperdiet augue, et venenatis lectus semper vel. Phasellus faucibus nulla in quam egestas eleifend. Cras tristique augue eget libero tristique condimentum. Mauris eget diam eget risus feugiat rutrum. Duis placerat lorem quis augue semper porttitor. Nullam iaculis dui feugiat erat condimentum rutrum. Sed at accumsan diam. Maecenas ut urna id velit posuere auctor in vel dui. Aenean consectetur dui in leo faucibus sed feugiat dui blandit. In accumsan diam vitae erat volutpat volutpat aliquam nunc euismod. Vivamus viverra lorem nulla. Quisque justo quam, adipiscing sit amet auctor non, laoreet sit amet nisl. Donec euismod lorem ac mi dictum volutpat. Donec ligula mi, varius ac auctor at, sollicitudin id elit. In auctor sodales ipsum nec consectetur. Sed lacinia varius nibh vitae vulputate.<p>
+	<br/>
+	<br/>
+	<div class="el">
+	This is a div tag.
+	</div>
+
+	<style>
+		.el span:hover {
+		    font-weight:bold;
+
+		}
+	</style>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		const msg = new SpeechSynthesisUtterance();
+		let voices = [];
+	  	$(".el").mouseover(function (e) {
+		    var target = $(e.target);
+		    msg.text = target.text();
+		    if( target.is(".el") ) {
+		        // $(".el").lettering('words');
+		        speechSynthesis.speak(msg);
+		        alert("Text-content:"+msg.text);
+		    }
+		});
+	</script>
+	
+
+</body>
+</html>
+
+
+
