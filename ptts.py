@@ -55,14 +55,3 @@ for voice in voices:
    say('Testing voice ')
 
 
-
-function handler(e) {
-    var target = $(e.target);
-    var elId = target.text();
-    if( target.is(".el") ) {
-        $(".el").lettering('words');
-        alert(elId);
-    }
-}
-
-$(".el").mouseover(handler);

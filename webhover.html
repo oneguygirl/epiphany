@@ -6,12 +6,13 @@
 
 <body>
 	
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris suscipit interdum fermentum. Aenean fermentum imperdiet augue, et venenatis lectus semper vel. Phasellus faucibus nulla in quam egestas eleifend. Cras tristique augue eget libero tristique condimentum. Mauris eget diam eget risus feugiat rutrum. Duis placerat lorem quis augue semper porttitor. Nullam iaculis dui feugiat erat condimentum rutrum. Sed at accumsan diam. Maecenas ut urna id velit posuere auctor in vel dui. Aenean consectetur dui in leo faucibus sed feugiat dui blandit. In accumsan diam vitae erat volutpat volutpat aliquam nunc euismod. Vivamus viverra lorem nulla. Quisque justo quam, adipiscing sit amet auctor non, laoreet sit amet nisl. Donec euismod lorem ac mi dictum volutpat. Donec ligula mi, varius ac auctor at, sollicitudin id elit. In auctor sodales ipsum nec consectetur. Sed lacinia varius nibh vitae vulputate.<p>
+	<p>Lorem ipsum dolor sit amet, aba eti nai<p>
 	<br/>
 	<br/>
 	<div >
 	This is a div tag.
 	</div>
+	<img src="images/train.png" alt ="This is an image" />
 
 	<!-- <style>
 		.speakText span:hover {
@@ -24,17 +25,59 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 	<script src="jquery.lettering-0.6.1.min.js"></script>
 	<script type="text/javascript">
-		
-	  	$(window).mouseover(function (e) {
-		    var target = $(e.target);
-		    var msg = target.text();
-		    target.toggleClass("speakText");
-		    if( target.is(".speakText") ) {
-		        // $(".speakText").lettering('words');
-		        responsiveVoice.speak(msg);
-		       	// alert("Text-content:"+ (msg));    
-		    }
+		const pressed = [];
+  		const secretCode = 'play';
+  		const secretCode2 = 'stop';
+  		window.addEventListener('keyup', (e) => {
+  			pressed.push(e.key);
+  			pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+  			if (pressed.join('').includes(secretCode)) {
+			  	$(document).mouseover(function (el) {
+				    var target = $(el.target);
+				    var msg = target.text();
+				    var msgalt = target.attr("alt");
+				    if(msgalt){
+				        responsiveVoice.speak(msgalt);
+				    }
+				    target.addClass("speakText");
+				    if(target.is(".speakText") ) {
+				        // $(".speakText").lettering('words');
+				        responsiveVoice.speak(msg);
+				       
+				       	// alert("Text-content:"+ (msg));    
+				    }
+				});
+			}
 		});
+		window.addEventListener('keyup', (e2) => {
+  			pressed.push(e2.key);
+  			pressed.splice(-secretCode2.length - 1, pressed.length - secretCode2.length);
+  			if (pressed.join('').includes(secretCode2)) {
+  				$(document).mouseover(function (el2) {
+				    var target = $(el2.target);
+				    var msg = target.text();
+				    var msgalt = target.attr("alt");
+				    if(msgalt){
+						if(responsiveVoice.isPlaying()) {
+						  console.log("I hope you are listening");
+						  responsiveVoice.cancel();
+						}
+				        
+				    }
+				    target.addClass("speakText");
+				    if(target.is(".speakText") ) {
+				        // $(".speakText").lettering('words');
+				        if(responsiveVoice.isPlaying()) {
+						  console.log("I hope you are listening");
+						  responsiveVoice.cancel();
+						}
+				       
+				       	// alert("Text-content:"+ (msg));    
+				    }
+				});
+			}
+		});
+
 	</script>
 	
 
