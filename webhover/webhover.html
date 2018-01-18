@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Webhover</title>
+</head>
+
+<body>
+	
+	<p>Lorem ipsum dolor sit amet, aba eti nai<p>
+	<br/>
+	<br/>
+	<div >
+	This is a div tag.
+	</div>
+	<img src="images/train.png" alt ="This is an image" />
+
+	<!-- <style>
+		.speakText span:hover {
+		    font-weight:bold;
+
+		}
+	</style> -->
+
+	<script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script src="jquery.lettering-0.6.1.min.js"></script>
+	<script type="text/javascript">
+		const pressed = [];
+  		const secretCode = 'play';
+  		// const secretCode2 = 'stop';
+  		// window.addEventListener('keyup', (e) => {
+  		// 	pressed.push(e.key);
+  		// 	pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+  			
+  		// 	if (pressed.join('').includes(secretCode)) {
+  		// 		responsiveVoice.cancel();
+  		// 	}
+  		// 	});
+
+		// document.addEventListener('mouseover',(e) => {
+		// 	var target= e.target;
+		// 	var msg=target.innerText;
+		// 	target.classList.toggle("speakText");
+		// 	responsiveVoice.speak(msg);
+		//  });
+			  	$(document).mouseover(function (el) {
+				    var target = $(el.target);
+				    var msg = target.text();
+				    var msgalt = target.attr("alt");
+				    if(msgalt){
+				        responsiveVoice.speak(msgalt);
+				    }
+				    target.addClass("speakText");
+				    if(target.is(".speakText") ) {
+				        // $(".speakText").lettering('words');
+				        responsiveVoice.speak(msg);
+				       
+				       	// alert("Text-content:"+ (msg));    
+				    }
+				});
+			
+		
+		
+
+	</script>
+	
+
+</body>
+</html>
+
+
+
