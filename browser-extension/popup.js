@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // getCurrentTabUrl((url) => {
     var dropdown = document.getElementById('dropdown');
     // if(dropdown.value === enable){
-      speakText();
+    speakText();
   // }
   // });
 });
