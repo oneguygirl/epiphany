@@ -1,2 +1,2 @@
 # ScreenTxt-2-Speech
-Speaks text contents on mouse hover.
+Speaks the text contents of browser on mouse hover.
