@@ -67,16 +67,16 @@
 	    var imgtext=target.getElementsByTagName("img").alt;
 	    var imgmsg= new SpeechSynthesisUtterance(imgtext);
 	    target.classList.toggle("speakText");
-	    
+	     console.log(imgtext);
 	    if(target.classList.contains("speakText")){    
 	        document.addEventListener('click',() => {    
 	            speechSynthesis.cancel();
 	        });
-	        // console.log(imgmsg);
-	        // speechSynthesis.speak(msg);
+	       
+	        speechSynthesis.speak(msg);
 	        // if(imgtext){
-	        speechSynthesis.speak(imgmsg);
-	        }
+	        // speechSynthesis.speak(imgmsg);
+	        // }
 	        // console.log(msgtext.indexOf("↵"));
 	        //if(msgtext.indexOf(/\n) != null){
 	            // console.log(e.target);

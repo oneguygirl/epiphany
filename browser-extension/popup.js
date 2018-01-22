@@ -50,12 +50,16 @@ function getCurrentTabUrl(callback) {
 function speakText() {
   chrome.tabs.executeScript(null, {file: "script.js"});
 }
-document.addEventListener('DOMContentLoaded', () => {
-  // getCurrentTabUrl((url) => {
-    var dropdown = document.getElementById('dropdown');
-    // if(dropdown.value === enable){
-    speakText();
-  // }
-  // });
+
+chrome.webNavigation.onCompleted.addListener(function() {
+  chrome.tabs.executeScript(null, {file: "script.js"});
 });
+// document.addEventListener('DOMContentLoaded', () => {
+//   // getCurrentTabUrl((url) => {
+//     // var dropdown = document.getElementById('dropdown');
+//     // if(dropdown.value === enable){
+//     speakText();
+//   });
+  // });
+// });
 
