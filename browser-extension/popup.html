@@ -1,0 +1,55 @@
+
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>Speech synthesizer</title>
+    <style type="text/css">
+      body {
+        margin: 10px;
+        white-space: nowrap;
+      }
+
+      h1 {
+        font-size: 15px;
+      }
+
+      #container {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+    -->
+   
+  </head>
+
+  <body>
+    <h1>On hover screen Narrator</h1>
+    <div id="container">
+      <span>Choose enable/disable on hover TTS</span>
+      <select id="dropdown">
+        <option value="enable">Enable</option>
+        <option value="disable">Disable</option>
+      </select>
+    </div>
+  </body>
+<!-- 
+  <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script> -->
+  <script src="script.js"></script>
+  <script src="popup.js"></script> 
+</html>
