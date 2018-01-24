@@ -1,24 +1,37 @@
 var tagList = ['HTML', 'HEAD', 'BODY', 'DIV'];
+
+const pressed = [];
+
+$(document).keyup(function(e) {
+    pressed.push(e.key);
+    pressed.splice(-3, pressed.length - 2);
+    console.log(pressed);
+});
+
 var extensionOn = true;
 $(document).keydown(function(e){
+    console.log(e);
     if (e.key == 'F11')
     {
         var fullscreentext = "Full screen on";
         var fullscreenmsg = new SpeechSynthesisUtterance(fullscreentext);
         speechSynthesis.speak(fullscreenmsg);
-        if (e.key == 'F11')
-        {
-         var fullscreenofftext = "Full screen off";
-          var fullscreenoffmsg = new SpeechSynthesisUtterance(fullscreenofftext);
-          speechSynthesis.speak(fullscreenoffmsg);    
-        }   
+        // var e = {key: null};
+        // $(document).keydown(function(ev){
+        //     if (ev.key == 'F11')
+        //     {
+        //      var fullscreenofftext = "Full screen off";
+        //       var fullscreenoffmsg = new SpeechSynthesisUtterance(fullscreenofftext);
+        //       speechSynthesis.speak(fullscreenoffmsg);    
+        //     } 
+        // });      
     }
 });
 
 if (extensionOn)
 {
     $(document).ready(function(){
-        var welcometext = "Page loaded. Press F11 for ease of use";
+        var welcometext = "  ";
         var welcomemsg = new SpeechSynthesisUtterance(welcometext);
         speechSynthesis.speak(welcomemsg);
     })
