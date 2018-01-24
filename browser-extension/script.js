@@ -1,16 +1,40 @@
 var tagList = ['HTML', 'HEAD', 'BODY', 'DIV'];
-
-$(document).mouseleave(function(){
-    var ooftext = "Out of frame";
-    var oofmsg = new SpeechSynthesisUtterance(ooftext);
-    speechSynthesis.speak(oofmsg);
+var extensionOn = true;
+$(document).keydown(function(e){
+    if (e.key == 'F11')
+    {
+        var fullscreentext = "Full screen on";
+        var fullscreenmsg = new SpeechSynthesisUtterance(fullscreentext);
+        speechSynthesis.speak(fullscreenmsg);
+        if (e.key == 'F11')
+        {
+         var fullscreenofftext = "Full screen off";
+          var fullscreenoffmsg = new SpeechSynthesisUtterance(fullscreenofftext);
+          speechSynthesis.speak(fullscreenoffmsg);    
+        }   
+    }
 });
 
-$(document).mouseenter(function(){
-    var oofstext = "Inside frame";
-    var oofsmsg = new SpeechSynthesisUtterance(oofstext);
-    speechSynthesis.speak(oofsmsg);
-});
+if (extensionOn)
+{
+    $(document).ready(function(){
+        var welcometext = "Page loaded. Press F11 for ease of use";
+        var welcomemsg = new SpeechSynthesisUtterance(welcometext);
+        speechSynthesis.speak(welcomemsg);
+    })
+    extensionOn = false;
+}
+// $(document).mouseleave(function(){
+//     var ooftext = "Out of frame";
+//     var oofmsg = new SpeechSynthesisUtterance(ooftext);
+//     speechSynthesis.speak(oofmsg);
+// });
+
+// $(document).mouseenter(function(){
+//     var oofstext = "Inside frame";
+//     var oofsmsg = new SpeechSynthesisUtterance(oofstext);
+//     speechSynthesis.speak(oofsmsg);
+// });
 
 $(document).mouseover(function (e) {
     var target = $(e.target);
