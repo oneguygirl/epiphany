@@ -15,39 +15,19 @@ $(document).keydown(function(e){
     {
         var fullscreentext = "Full screen on";
         var fullscreenmsg = new SpeechSynthesisUtterance(fullscreentext);
-        speechSynthesis.speak(fullscreenmsg);
-        // var e = {key: null};
-        // $(document).keydown(function(ev){
-        //     if (ev.key == 'F11')
-        //     {
-        //      var fullscreenofftext = "Full screen off";
-        //       var fullscreenoffmsg = new SpeechSynthesisUtterance(fullscreenofftext);
-        //       speechSynthesis.speak(fullscreenoffmsg);    
-        //     } 
-        // });      
+        speechSynthesis.speak(fullscreenmsg);   
     }
 });
 
 if (extensionOn)
 {
     $(document).ready(function(){
-        var welcometext = "  ";
+        var welcometext = "Page Loaded";
         var welcomemsg = new SpeechSynthesisUtterance(welcometext);
         speechSynthesis.speak(welcomemsg);
     })
     extensionOn = false;
 }
-// $(document).mouseleave(function(){
-//     var ooftext = "Out of frame";
-//     var oofmsg = new SpeechSynthesisUtterance(ooftext);
-//     speechSynthesis.speak(oofmsg);
-// });
-
-// $(document).mouseenter(function(){
-//     var oofstext = "Inside frame";
-//     var oofsmsg = new SpeechSynthesisUtterance(oofstext);
-//     speechSynthesis.speak(oofsmsg);
-// });
 
 $(document).mouseover(function (e) {
     var target = $(e.target);
