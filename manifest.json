@@ -3,7 +3,7 @@
 
   "name": "On-hover speech synthesizer",
   "description": "This extension allows the user to speak the mouse hovered text on the webpage",
-  "version": "1.0",
+  "version": "0.1",
    "icons": {
     "128": "images/icon128.png",
     "48": "images/icon48.png"
