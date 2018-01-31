@@ -13,20 +13,20 @@
     "scripts": ["jquery-3.3.1.min.js","script.js"],
     "persistent": false
   },
+   "options_ui": {
+    // Required.
+    "page": "options.html"
+  },
+  // "options_page": "options.html",
 
   "content_scripts": 
     [
-        {
-            "matches": [ "http://*/*", "https://*/*"],
+        {   
+            "matches": [ "http://*/*", "https://*/*"],  
             "js":["jquery-3.3.1.min.js","script.js"],
             "run_at": "document_idle"
         }
     ],
-
-  "browser_action": {
-    "default_icon": "images/icon16.png",
-    "default_popup": "popup.html"
-  },
 
   "permissions": [
     "activeTab",
@@ -34,6 +34,7 @@
     "notifications",
     "webNavigation",
     "http://*/",
-    "https://*/"
+    "https://*/",
+    "storage"
   ]
 }

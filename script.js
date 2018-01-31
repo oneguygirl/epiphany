@@ -1,75 +1,76 @@
-var tagList = ['HTML', 'HEAD', 'BODY', 'DIV'];
+var tagList = ['HTML', 'HEAD', 'BODY', 'DIV']; 
+$(document).ready(function(){ 
+    chrome.storage.sync.get({
+        setState: 'enable',
+        setRate: '0.5',
+        }, function(items) {
+            if (items.setState === "enable")
+            {
+            $(document).keydown(function(e){
+                if(e.key == 'F11')
+                {
+                    var fullscreentext = "Full screen on";
+                    var fullscreenmsg = new SpeechSynthesisUtterance(fullscreentext);
+                    fullscreenmsg.rate=items.setRate;
+                    speechSynthesis.speak(fullscreenmsg);   
+                }
+            });
+            // MAIN PROGRAM
+            $(document).mouseover(function (e) {
+                var target = $(e.target);
+                var inputtext = target.val();
+                var inputmsg = new SpeechSynthesisUtterance(inputtext);
+                var msgtext = target.text();
+                var msg = new SpeechSynthesisUtterance(msgtext);
+                var msgalt = target.attr("alt");
+                var msgaltnew = new SpeechSynthesisUtterance(msgalt);
+                var msglabel= target.attr('aria-label');
+                var msglabelnew = new SpeechSynthesisUtterance(msglabel);
 
-const pressed = [];
+                //TO SPEAK
+                function speaker()
+                {   
+                    //$(target).css("font-size", "40px");
+                    speechSynthesis.speak(msg);
+                    speechSynthesis.speak(inputmsg);
+                    speechSynthesis.speak(msgaltnew);
+                    speechSynthesis.speak(msglabelnew);
+                }
+                //TO STOP
+                function stopSpeaker()
+                {
+                    target.removeClass("speakText");
 
-$(document).keyup(function(e) {
-    pressed.push(e.key);
-    pressed.splice(-3, pressed.length - 2);
-    console.log(pressed);
+                    speechSynthesis.cancel();
+                    $(target).removeAttr( 'style' );
+                }
+                //TO CHECK CLASS
+                function classCheck()
+                {
+                    if(target.is(".speakText") ) {
+                        speaker();
+                        var isSpeaking=true;
+                        // USE CTRL TO STOP
+                        if(isSpeaking) {
+                            $(document).keyup(function(e) {
+                                if(e.key === "Control"){
+                                stopSpeaker();
+                            }
+                            });
+                        } 
+                    }
+                }
+                if(tagList.indexOf(target.prop("tagName")) == -1){
+                        target.addClass("speakText");
+                        setTimeout(function(){
+                            $(target).mouseleave(function(){
+                                stopSpeaker();
+                            });
+                        },100);
+                        classCheck();         
+                    }
+            }); //END of MAIN PROGRAM
+        }    
+    });
 });
 
-var extensionOn = true;
-$(document).keydown(function(e){
-    console.log(e);
-    if (e.key == 'F11')
-    {
-        var fullscreentext = "Full screen on";
-        var fullscreenmsg = new SpeechSynthesisUtterance(fullscreentext);
-        speechSynthesis.speak(fullscreenmsg);   
-    }
-});
-
-if (extensionOn)
-{
-    $(document).ready(function(){
-        var welcometext = "Page Loaded";
-        var welcomemsg = new SpeechSynthesisUtterance(welcometext);
-        speechSynthesis.speak(welcomemsg);
-    })
-    extensionOn = false;
-}
-
-$(document).mouseover(function (e) {
-    var target = $(e.target);
-    var msgtext = target.text();
-    var msg = new SpeechSynthesisUtterance(msgtext);
-    var msgalt = target.attr("alt");
-    var msgaltnew = new SpeechSynthesisUtterance(msgalt);
-    var msglabel= target.attr('aria-label');
-    var msglabelnew = new SpeechSynthesisUtterance(msglabel);
-    function speaker()
-    {
-        speechSynthesis.speak(msg);
-        speechSynthesis.speak(msgaltnew);
-        speechSynthesis.speak(msglabelnew);
-    }
-
-    function stopSpeaker()
-    {
-        target.removeClass("speakText");
-        speechSynthesis.cancel();
-    }
-   
-    function classCheck()
-    {
-        if(target.is(".speakText") ) {
-            speaker();
-            var isSpeaking=true;
-            if(isSpeaking) {
-                $(document).click(function() {
-                    stopSpeaker();
-                });
-            } 
-        }
-    }
-    // console.log(tagList.indexOf(target.prop("tagName")));
-    if(tagList.indexOf(target.prop("tagName")) == -1){
-            target.addClass("speakText");
-            setTimeout(function(){
-                $(target).mouseleave(function(){
-                    stopSpeaker();
-                });
-            },100);
-            classCheck();         
-        } 
-});
